@@ -3,6 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <title>MATRIX ESCAPE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
 </head>
-<body>Loading full build failed in this pass. Restoring from workspace next.</body>
+<body style="margin:0;background:#020805;color:#8cff8c;font-family:system-ui;padding:24px">
+<p>Jacking into last stable construct&hellip;</p>
+<script>
+(async () => {
+  const urls = [
+    'https://cdn.jsdelivr.net/gh/twiztid4200/Matrix-Escape@b0ca03946284d91b0e44a66c90cd126610ed1c8d/index.html',
+    'https://raw.githubusercontent.com/twiztid4200/Matrix-Escape/b0ca03946284d91b0e44a66c90cd126610ed1c8d/index.html'
+  ];
+  let html = null;
+  for (const url of urls) {
+    try {
+      const r = await fetch(url, { cache: 'no-store' });
+      if (r.ok) { html = await r.text(); break; }
+    } catch (e) {}
+  }
+  if (!html) {
+    document.body.textContent = 'Could not restore build. Hard-refresh or open the repo commit b0ca039.';
+    return;
+  }
+  document.open();
+  document.write(html);
+  document.close();
+})();
+</script>
+</body>
 </html>
